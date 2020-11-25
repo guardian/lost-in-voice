@@ -1,5 +1,5 @@
+import { neutral } from "@guardian/src-foundations/palette";
 import { css, keyframes } from '@emotion/react/macro';
-
 
 function randomUntil(num: number) {
   return Math.floor(Math.random() * num);
@@ -7,7 +7,7 @@ function randomUntil(num: number) {
 
 function boxShadowStars(quantity: number) {
   return Array.from({ length: quantity }, () => {
-    return `${randomUntil(2000)}px ${randomUntil(2000)}px #ffffff`
+    return `${randomUntil(2000)}px ${randomUntil(2000)}px ${neutral[100]}`
   }).join(' , ');
 }
 
@@ -28,7 +28,6 @@ const starAnimation = keyframes`
 
 export const starFieldBackground = css`
   height: 100vh;
-  background-color: black;
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   overflow: hidden;
 `;

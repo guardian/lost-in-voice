@@ -16,4 +16,5 @@ export const landing = css`
   justify-content: center;
   align-items: center;
   background-color: ${neutral[100]};
+  text-align: center;
 `;
