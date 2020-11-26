@@ -17,4 +17,8 @@ export const landing = css`
   align-items: center;
   background-color: ${neutral[100]};
   text-align: center;
+  
+  label {
+    text-align: left;
+  }
 `;

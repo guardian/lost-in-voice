@@ -1,4 +1,6 @@
 {
   "greeting": "Hello $0. This is the ship's computer speaking. Something is very wrong with the ship's engine, and you're the only crew member I could wake up. Your GUI is down, so you're going to need to use the spoken interface.",
-  "taskOne": "I've brought up the engine diagnostics page for you. You're going to need to check through the different reports, and then use the form at the bottom of the page to select the issues we need to address. Press command F5 to start. Once you enter the web area, use control, option and the left and right arrows to move between items on the page. If you need to hear this again, press shift S."
+  "taskOne": "I've brought up the engine diagnostics page for you. You're going to need to check through the different reports, and then use the form at the bottom of the page to select the issues we need to address. Press command F5 to start. Once you enter the web area, use control, option and the left and right arrows to move between items on the page. If you need to hear this again, press shift S.",
+  "taskOneFail": "I think you might have missed some information, $0",
+  "taskOnePass": "It looks like we have a few problems to deal with. You should review the events of the last five cycles. Let me bring up my personal blog."
 }

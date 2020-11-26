@@ -1,5 +1,6 @@
 import React from "react";
 import { ChangeEvent, FormEvent, useState } from "react";
+import StickyNote from "./StickyNote";
 import Landing from "./pages/landing/Landing";
 import Page from "./pages/Page";
 import TaskOne from "./pages/tasks/TaskOne";
@@ -23,13 +24,18 @@ function App() {
   return (
     <>
       {!isStarted && <Landing name={name} setName={setUserName} start={start} />}
-      {isStarted && <Page onRender={async () => {
-        startGame(name).then(() => {
-          setTask(1);
-        })
-      }}>
-        <TaskOne start={task === 1} />
-      </Page>}
+      {isStarted && <>
+        <Page onRender={async () => {
+          startGame(name).then(() => {
+            console.log('started');
+            
+            setTask(1);
+          })
+        }}>
+          <TaskOne start={task === 1} name={name} />
+        </Page>
+        <StickyNote />
+       </>}
     </>
   );
 }

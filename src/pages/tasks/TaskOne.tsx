@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"
-import { firstTask } from "../../dialog";
+import { firstTask,  } from "../../dialog";
 import TaskOneForm, { TaskOneResponse } from "./TaskOneForm";
 
 type TaskProps = {
   start: boolean
+  name: string
 }
 
 type FoldRate = {

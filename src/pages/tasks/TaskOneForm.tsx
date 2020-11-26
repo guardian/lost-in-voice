@@ -87,7 +87,7 @@ function TaskOneForm({ onSubmit }: TaskOneFormProps) {
         <legend>How are the bats?</legend>
         <label htmlFor="okay">
           <input type="radio" name="bats" id="okay" value="yes" onChange={onFieldChange('batStatus')} defaultChecked />
-          Okay
+          They seem fine
         </label>
         <label htmlFor="whocan">
           <input type="radio" name="bats" id="whocan" value="no" onChange={onFieldChange('batStatus')} />
