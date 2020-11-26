@@ -34,7 +34,7 @@ function App() {
           })
         }}>
           {task === 1 && <TaskOne start={task === 1} name={name} done={() => { setTask(2) }} />}
-          {task === 2 && <TaskTwo start={task === 2} name={name} done={() => { setTask(2) }} />}
+          {task === 2 && <TaskTwo start={task === 2} name={name} done={() => { setTask(3) }} />}
         </Page>
         <StickyNote />
        </>}

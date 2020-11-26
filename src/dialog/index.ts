@@ -1,5 +1,5 @@
 import { say, substitute } from "../services/speaker";
-import { greeting, taskOne, taskOneFail, taskOnePass } from "./dialog.json";
+import { greeting, taskOne, taskOneFail, taskOnePass, taskTwoFail, taskTwoPass } from "./dialog.json";
 import explosion from "../assets/explosion.wav";
 
 function audioEnded(audio) {
@@ -29,4 +29,11 @@ export async function firstTaskOutcome(success: boolean, name: string) {
     return say(taskOnePass);
   }
   return say(substitute(taskOneFail, [name]));
+}
+
+export async function secondTaskOutcome(success: boolean, name: string) {
+  if (success) {
+    return say(taskTwoPass);
+  }
+  return say(substitute(taskTwoFail, [name]));
 }

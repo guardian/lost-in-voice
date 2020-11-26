@@ -1,9 +1,35 @@
+import { ChangeEvent, createRef, FormEvent, useEffect, useState } from "react";
 import { TaskProps } from "./types";
+import { secondTaskOutcome } from "../../dialog";
+import { wait } from "../../services/timing";
 
-function TaskTwo(props: TaskProps) {
+function TaskTwo({ name }: TaskProps) {
+  const taskRoot = createRef<HTMLHeadingElement>();
+  
+  const [unusual, setUnusual] = useState('none');
+  
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (unusual === 'none') return;
+    await wait(2500);
+    if (unusual === 'C') {
+      secondTaskOutcome(true, name);
+    } else {
+      secondTaskOutcome(false, name);
+    }
+  }
+  
+  function onInputChange(event: ChangeEvent<HTMLInputElement>) {
+    setUnusual(event.target.value);
+  }
+  
+  useEffect(() => {
+    taskRoot.current?.focus();
+  }, [])
+  
   return (
     <article>
-      <h1>The <s>Very Secret</s> Diary of the Ship's Computer</h1>
+      <h1 tabIndex={-1} ref={taskRoot}>The <s>Very Secret</s> Diary of the Ship's Computer</h1>
       <article>
         <h2>Cycle E</h2>
         <p>Dear Diary. I'm a bit scared of the noises coming out of the engine room. I think I had better wake a member of the crew.</p>
@@ -39,11 +65,12 @@ function TaskTwo(props: TaskProps) {
           Dear Diary. It's been six months and I'm really bored with only the engine bats for company. I'm going to play some Animal Crossing.
         </p>
       </article>
-      <form>
+      <form onSubmit={onSubmit}>
         <label htmlFor="cycle">
-          If you think I did something unusual, put the cycle letter here
-          <input type="text" name="cycle" id="cycle" />
+          If you think I did something unusual, enter the cycle letter here
         </label>
+        <input type="text" name="cycle" id="cycle" value={unusual} onChange={onInputChange} />
+        <input type="submit" value="Check"/>
       </form>
     </article>
   )

@@ -15,10 +15,10 @@ export type TaskOneResponse = {
 }
 
 const initialState: TaskOneResponse = {
-  faultRod: '',
+  faultRod: '1',
   engineTemp: 'normal',
   radiationLevel: 'no',
-  foldRate: '',
+  foldRate: 'A',
   batStatus: 'yes'
 }
 
