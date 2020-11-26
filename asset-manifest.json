@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/lost-in-voice/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/lost-in-voice/static/js/main.6a1f3b8d.chunk.js",
+    "main.js.map": "/lost-in-voice/static/js/main.6a1f3b8d.chunk.js.map",
+    "runtime-main.js": "/lost-in-voice/static/js/runtime-main.92e7d82a.js",
+    "runtime-main.js.map": "/lost-in-voice/static/js/runtime-main.92e7d82a.js.map",
+    "static/js/2.cb1480d9.chunk.js": "/lost-in-voice/static/js/2.cb1480d9.chunk.js",
+    "static/js/2.cb1480d9.chunk.js.map": "/lost-in-voice/static/js/2.cb1480d9.chunk.js.map",
+    "static/js/3.3dcb8251.chunk.js": "/lost-in-voice/static/js/3.3dcb8251.chunk.js",
+    "static/js/3.3dcb8251.chunk.js.map": "/lost-in-voice/static/js/3.3dcb8251.chunk.js.map",
+    "index.html": "/lost-in-voice/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/lost-in-voice/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.cb1480d9.chunk.js.LICENSE.txt": "/lost-in-voice/static/js/2.cb1480d9.chunk.js.LICENSE.txt",
+    "static/media/explosion.785d5dec.wav": "/lost-in-voice/static/media/explosion.785d5dec.wav"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92e7d82a.js",
+    "static/js/2.cb1480d9.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.6a1f3b8d.chunk.js"
+  ]
+}
