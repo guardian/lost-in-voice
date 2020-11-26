@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react"
-import { firstTask,  } from "../../dialog";
+import { TaskProps } from "./types";
+import { wait } from "../../services/timing";
+import { firstTask, firstTaskOutcome } from "../../dialog";
 import TaskOneForm, { TaskOneResponse } from "./TaskOneForm";
-
-type TaskProps = {
-  start: boolean
-  name: string
-}
 
 type FoldRate = {
   cycle: string,
@@ -50,34 +47,36 @@ function getBats() {
   })
 }
 
-function createResponseAssessment(faultyFuelRod: number, engineTemp: number, curieLevels: number[], foldRates: FoldRate[]) {
+function createResponseAssessment(faultyFuelRod: number, engineTemp: number, curieLevels: number[], foldRates: FoldRate[], name: string, done: () => void) {
   const engineStatus = engineTemp > 1500 ? 'high' : engineTemp < 500 ? 'low' : 'normal';
   const curieDanger = curieLevels.slice(0, 3).some(level => level > 1) ? 'yes' : 'no';
   const highestFoldRate = Math.max(...foldRates.map(fRate => fRate.rate))
   const correctRate = foldRates.find(foldRate => foldRate.rate === highestFoldRate)
   
-  return function assessResponse(response: TaskOneResponse) {
+  return async function assessResponse(response: TaskOneResponse) {
     const fuelRodCorrect = parseInt(response.faultRod, 10) === faultyFuelRod + 1;
     const engineCorrect = response.engineTemp === engineStatus;
     const radiationCorrect = response.radiationLevel === curieDanger;
     const foldRateCorrect = response.foldRate === correctRate?.cycle;
-    console.log({
-      fuel: fuelRodCorrect,
-      engine: engineCorrect,
-      radiation: radiationCorrect,
-      folds: foldRateCorrect
-    });
+    // Wait for any VO prompt to finish
+    await wait(2500);
+    if (fuelRodCorrect && engineCorrect && radiationCorrect && foldRateCorrect) {
+      await firstTaskOutcome(true, name);
+      done();
+    } else {
+      await firstTaskOutcome(false, name);
+    }
   }
 }
 
-function TaskOne({ start }: TaskProps) {
+function TaskOne({ start, name, done }: TaskProps) {
   const faultyFuelRod = randomNumberBetween(2, fuelRodCount - 1);
   const engineTemp = randomNumberBetween(minEngineTemp, maxEngineTemp);
   const curieLevels = getCurieLevels();
   const foldRates = getFoldRates();
   const bats = getBats();
   
-  const assessResponse = createResponseAssessment(faultyFuelRod, engineTemp, curieLevels, foldRates);
+  const assessResponse = createResponseAssessment(faultyFuelRod, engineTemp, curieLevels, foldRates, name, done);
   
   const [taskAnnounced, setTaskAnnounced] = useState(false);
   
@@ -140,7 +139,7 @@ function TaskOne({ start }: TaskProps) {
     </div>
     <div>
       <h2>Fold Rate</h2>
-      <p>The rate at which the engine performed spacetime folds in the last five cycles.</p>
+      <p>The rate at which the engine performed spacetime folds in the last five alphabetical cycles.</p>
       <ol type="A" reversed>
         {foldRates.map((rate) => {
           return <li key={rate.cycle}>{rate.rate}&nbsp;folds per hour</li>

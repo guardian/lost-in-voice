@@ -44,7 +44,7 @@ const stickyContent = css`
 `;
 
 function StickyNote() {
-  return <div css={stickyContainer}>
+  return <div css={stickyContainer} aria-hidden="true">
         <div css={stickyOuter}>
           <div css={sticky}>
             <div css={stickyContent}>

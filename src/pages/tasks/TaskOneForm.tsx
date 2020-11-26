@@ -49,10 +49,18 @@ function TaskOneForm({ onSubmit }: TaskOneFormProps) {
   return <div>
     <h2>Engine Fault Reporting Form</h2>
     <form onSubmit={onFormSubmit}>
-      <label htmlFor="rods">
-        Faulty fuel rod numbers, if any
-        <input tabIndex={0} type="text" name="rods" id="rods" value={responses.faultRod} onChange={onFieldChange('faultRod')}/>
-      </label>
+      <div>
+        <label htmlFor="rods">
+          Faulty fuel rod numbers, if any
+        </label>
+        <input type="text" name="rods" id="rods" value={responses.faultRod} onChange={onFieldChange('faultRod')}/>
+      </div>
+      <div>
+        <label htmlFor="folds">
+          Cycle with highest fold rate
+        </label>
+        <input type="text" name="folds" id="folds" value={responses.foldRate} onChange={onFieldChange('foldRate')} />
+      </div>
       <fieldset>
         <legend>What is the engine temperature status?</legend>
         <label htmlFor="normal">
@@ -79,10 +87,6 @@ function TaskOneForm({ onSubmit }: TaskOneFormProps) {
           No
         </label>
       </fieldset>
-      <label htmlFor="folds">
-        Cycle with highest fold rate
-        <input tabIndex={0} type="text" name="folds" id="folds" value={responses.foldRate} onChange={onFieldChange('foldRate')} />
-      </label>
       <fieldset>
         <legend>How are the bats?</legend>
         <label htmlFor="okay">

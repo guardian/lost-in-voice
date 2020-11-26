@@ -4,6 +4,7 @@ import StickyNote from "./StickyNote";
 import Landing from "./pages/landing/Landing";
 import Page from "./pages/Page";
 import TaskOne from "./pages/tasks/TaskOne";
+import TaskTwo from "./pages/tasks/TaskTwo";
 import { startGame } from "./dialog";
 
 function App() {
@@ -32,7 +33,8 @@ function App() {
             setTask(1);
           })
         }}>
-          <TaskOne start={task === 1} name={name} />
+          {task === 1 && <TaskOne start={task === 1} name={name} done={() => { setTask(2) }} />}
+          {task === 2 && <TaskTwo start={task === 2} name={name} done={() => { setTask(2) }} />}
         </Page>
         <StickyNote />
        </>}
