@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 
 const pageStyles = css`
   height: 100vh;
-  /* overflow: hidden;
+  overflow: hidden;
   background-color: ${neutral[7]};
   color: ${neutral[7]};
   
@@ -14,7 +14,7 @@ const pageStyles = css`
     border-style: solid;
     background-color: ${neutral[7]};
     opacity: 0; 
-  } */
+  }
 `;
 
 type PageProps = {
