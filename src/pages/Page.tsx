@@ -5,7 +5,26 @@ import { css } from "@emotion/react";
 const pageStyles = css`
   height: 100vh;
   background-color: ${neutral[7]};
-  color: ${neutral[7]} !important;
+  color: ${neutral[7]};
+  
+  & > * {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+  
+  & form {
+    position: absolute;
+    right: 0;
+  }
+  
+  & label, fieldset {
+    display: block;
+    margin: 10px 0;
+  }
 `;
 
 type PageProps = {
